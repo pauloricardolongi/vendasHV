@@ -1,7 +1,9 @@
 package br.com.Vendas.tes;
 
 import java.math.BigDecimal;
+
 import java.util.List;
+
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -12,6 +14,7 @@ import br.com.Vendas.DAO.ProdutosDAO;
 import br.com.Vendas.domain.Fornecedor;
 
 import br.com.Vendas.domain.Produto;
+
 
 public class ProdutoDAOTest {
 
@@ -67,4 +70,27 @@ public class ProdutoDAOTest {
 		dao.excluir(produto);
 
 	}
+	
+	@Test
+	
+	public void editar() {
+
+		FornecedoresDAO fdao = new FornecedoresDAO();
+		Fornecedor fornecedor = fdao.buscarPorCodigo(9L);
+		
+		ProdutosDAO produtodao = new ProdutosDAO();
+		
+		Produto produto = produtodao.buscarPorCodigo(3L);
+
+		produto.setDescricao("cimento");
+		produto.setPreco(new BigDecimal(87.99));
+		produto.setQuantidade(5);
+		produto.setFornecedor(fornecedor);
+		
+		
+		
+		produtodao.editar(produto);
+
+	}
+		
 }
