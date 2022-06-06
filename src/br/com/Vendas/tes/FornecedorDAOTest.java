@@ -11,65 +11,67 @@ public class FornecedorDAOTest {
 
 	@Test
 	@Ignore
-	public void salvar(){
+	public void salvar() {
 		Fornecedor f1 = new Fornecedor();
 		Fornecedor f2 = new Fornecedor();
-		f1.setDescricao("Sebastiao Campos");
-		f2.setDescricao("Lauro Campos");
-		
+		f1.setDescricao("Julio");
+		f2.setDescricao("Cesar");
+
 		FornecedoresDAO dao = new FornecedoresDAO();
 		dao.salvar(f1);
 		dao.salvar(f2);
-		
+
 	}
+
 	@Test
 	@Ignore
-	public void listar(){
+	public void listar() {
 		FornecedoresDAO dao = new FornecedoresDAO();
 		List<Fornecedor> fornecedores = dao.listar();
-		
-		for(Fornecedor fornecedor : fornecedores){
+
+		for (Fornecedor fornecedor : fornecedores) {
 			System.out.println(fornecedor);
 		}
-		
+
 	}
+
 	@Test
-    @Ignore
-	public void buscarPorCodigo(){
+	@Ignore
+	public void buscarPorCodigo() {
 		FornecedoresDAO dao = new FornecedoresDAO();
-		
+
 		Fornecedor f1 = dao.buscarPorCodigo(2L);
 		Fornecedor f2 = dao.buscarPorCodigo(10L);
-		
-		
-		
-			System.out.println(f1);
-			System.out.println(f2);
-		
-		
+
+		System.out.println(f1);
+		System.out.println(f2);
+
 	}
+
 	@Test
 	@Ignore
-	public void excluir(){
+	public void excluir() {
 		FornecedoresDAO dao = new FornecedoresDAO();
-		
+
 		Fornecedor fornecedor = dao.buscarPorCodigo(10L);
-		
+
 		dao.excluir(fornecedor);
-		
-	}	
-		
-	
+
+	}
+
 	@Test
 	@Ignore
-	public void editar(){
-		
-FornecedoresDAO dao = new FornecedoresDAO();
-		
+	public void editar() {
+
+		FornecedoresDAO dao = new FornecedoresDAO();
+
 		Fornecedor fornecedor = dao.buscarPorCodigo(9L);
-		
-		fornecedor.setDescricao("Roberto Carlos");
+		Fornecedor fornecedo = dao.buscarPorCodigo(11L);
+
+		fornecedor.setDescricao("Por Menos");
+		fornecedo.setDescricao("Zanon");
 		dao.editar(fornecedor);
-		
-	}	
+		dao.editar(fornecedo);
+
+	}
 }

@@ -1,24 +1,24 @@
 package br.com.Vendas.DAO;
 
 import java.util.List;
+
+
 import org.hibernate.Query;
 import org.hibernate.Session;
-
 import org.hibernate.Transaction;
-
-import br.com.Vendas.domain.Fornecedor;
+import br.com.Vendas.domain.Funcionario;
 import br.com.Vendas.util.HibernateUtil;
 
-public class FornecedoresDAO {
+public class FuncionariosDAO {
 
-	public void salvar(Fornecedor fornecedor) {
+	public void salvar(Funcionario funcionario) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
 		
 		Transaction transacao = null;// inicia a transação como nulo
 		try{
 			transacao = sessao.beginTransaction(); //abrindo a transação
 			
-			sessao.save(fornecedor);
+			sessao.save(funcionario);
 			transacao.commit(); //confirmando a transação
 			
 		}catch(RuntimeException ex){
@@ -36,14 +36,14 @@ public class FornecedoresDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Fornecedor> listar(){
+	public List<Funcionario> listar(){
 Session sessao = HibernateUtil.getSessionFactory().openSession();
 		
-		List<Fornecedor> fornecedores = null;
+		List<Funcionario> funcionario = null;
 		try{
 			
-			Query consulta = sessao.getNamedQuery("Fornecedor.listar");
-			fornecedores = consulta.list();
+			Query consulta = sessao.getNamedQuery("Funcionario.listar");
+			funcionario = consulta.list();
 			
 			
 		}catch(RuntimeException ex){
@@ -55,18 +55,18 @@ Session sessao = HibernateUtil.getSessionFactory().openSession();
 			finally{
 				sessao.close();
 			}
-		return fornecedores;
+		return funcionario;
 	}
 	
-	public Fornecedor buscarPorCodigo(Long codigo){
+	public Funcionario buscarPorCodigo(Long codigo){
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
 				
-				Fornecedor fornecedor = null;
+				Funcionario funcionario = null;
 				try{
 					
-					Query consulta = sessao.getNamedQuery("Fornecedor.buscarPorCodigo");
+					Query consulta = sessao.getNamedQuery("Funcionario.buscarPorCodigo");
 					consulta.setLong("codigo",codigo);
-					fornecedor = (Fornecedor) consulta.uniqueResult();
+					funcionario = (Funcionario) consulta.uniqueResult();
 					
 					
 				}catch(RuntimeException ex){
@@ -78,17 +78,17 @@ Session sessao = HibernateUtil.getSessionFactory().openSession();
 					finally{
 						sessao.close();
 					}
-				return fornecedor;
+				return funcionario;
 			}
 	
-	public void excluir(Fornecedor fornecedor) {
+	public void excluir(Funcionario funcionario) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
 		
 		Transaction transacao = null;// inicia a transação como nulo
 		try{
 			transacao = sessao.beginTransaction(); //abrindo a transação
 			
-			sessao.delete(fornecedor);
+			sessao.delete(funcionario);
 			transacao.commit(); //confirmando a transação
 			
 		}catch(RuntimeException ex){
@@ -105,7 +105,7 @@ Session sessao = HibernateUtil.getSessionFactory().openSession();
 		
 	}
 	
-	public void editar(Fornecedor fornecedor) {
+	public void editar(Funcionario funcionario) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
 		
 		Transaction transacao = null;// inicia a transação como nulo
@@ -113,7 +113,7 @@ Session sessao = HibernateUtil.getSessionFactory().openSession();
 			transacao = sessao.beginTransaction(); //abrindo a transação
 			
 			
-			sessao.update(fornecedor);
+			sessao.update(funcionario);
 			transacao.commit(); //confirmando a transação
 			
 		}catch(RuntimeException ex){
@@ -131,5 +131,4 @@ Session sessao = HibernateUtil.getSessionFactory().openSession();
 	}
 	
 	
-			
 }
