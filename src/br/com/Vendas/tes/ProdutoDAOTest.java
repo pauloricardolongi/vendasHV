@@ -2,6 +2,7 @@ package br.com.Vendas.tes;
 
 import java.math.BigDecimal;
 
+
 import java.util.List;
 
 
@@ -23,12 +24,12 @@ public class ProdutoDAOTest {
 	public void salvar() {
 		
 		FornecedoresDAO dao = new FornecedoresDAO();
-		Fornecedor fornecedor = dao.buscarPorCodigo(3L);
+		Fornecedor fornecedor = dao.buscarPorCodigo(2L);
 		Produto p1 = new Produto();
 		
-		p1.setDescricao("cimento");
-		p1.setPreco(new BigDecimal(71.99D));
-		p1.setQuantidade(12);
+		p1.setDescricao("zinco");
+		p1.setPreco(new BigDecimal(81.99D));
+		p1.setQuantidade(6);
 		p1.setFornecedor(fornecedor);
 		
 
