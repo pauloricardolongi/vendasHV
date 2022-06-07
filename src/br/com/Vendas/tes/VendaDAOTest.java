@@ -66,17 +66,17 @@ public class VendaDAOTest {
 	}
 
 	@Test
-
+    @Ignore
 	public void editar() {
 
 		FuncionariosDAO fdao = new FuncionariosDAO();
-		Funcionario funcionario = fdao.buscarPorCodigo(4L);
+		Funcionario funcionario = fdao.buscarPorCodigo(11L);
 
 		VendasDAO dao = new VendasDAO();
 		Venda v1 = dao.buscarPorCodigo(1L);
 		
 		v1.setHorario(new Date());
-		v1.setValor_total(new BigDecimal(730));
+		v1.setValor_total(new BigDecimal(430));
 		v1.setFuncionario(funcionario);
 		
 

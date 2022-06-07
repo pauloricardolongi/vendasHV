@@ -1,8 +1,6 @@
 package br.com.Vendas.domain;
 
 import java.math.BigDecimal;
-
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,12 +9,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 
 
 @Entity
 @Table(name = "tb_itens")
+@NamedQueries({
+	@NamedQuery(name = "Item.listar", query = "SELECT item FROM Item item"),
+	@NamedQuery(name = "Item.buscarPorCodigo", query = "SELECT item FROM Item item WHERE item.codigo = :codigo"),
+})
 public class Item {
 	
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -78,6 +82,12 @@ public class Item {
 
 	public void setProduto(Produto produto) {
 		this.produto = produto;
+	}
+
+	@Override
+	public String toString() {
+		return "Item [codigo=" + codigo + ", quantidade=" + quantidade + ", valor_parcial=" + valor_parcial + ", venda="
+				+ venda + ", produto=" + produto + "]";
 	}
 	
 
