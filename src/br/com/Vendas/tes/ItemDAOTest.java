@@ -78,20 +78,20 @@ public class ItemDAOTest {
 	}
 
 	@Test
-    
+    @Ignore
 	public void editar() {
 
 		VendasDAO vdao = new VendasDAO();
-		Venda venda = vdao.buscarPorCodigo(3L);
+		Venda venda = vdao.buscarPorCodigo(1L);
 
 		ProdutosDAO pdao = new ProdutosDAO();
 		Produto produto  = pdao.buscarPorCodigo(5L);
 		
 		ItemDAO dao = new ItemDAO();
-		Item i1 = dao.buscarPorCodigo(1L);
+		Item i1 = dao.buscarPorCodigo(3L);
 		
-		i1.setQuantidade(13);
-		i1.setValor_parcial(new BigDecimal(80.20));
+		i1.setQuantidade(11);
+		i1.setValor_parcial(new BigDecimal(180.20));
 		i1.setVenda(venda);
 		i1.setProduto(produto);
 		

@@ -73,7 +73,7 @@ public class ProdutoDAOTest {
 	}
 	
 	@Test
-	
+	@Ignore
 	public void editar() {
 
 		FornecedoresDAO fdao = new FornecedoresDAO();

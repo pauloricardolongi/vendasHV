@@ -1,4 +1,4 @@
 
-.ui-widget, .ui-widget .ui-widget {
-font-size: 50% !important;
+.ui-widget,.ui-widget .ui-widget {
+	font-size: 60% !important;
 }
