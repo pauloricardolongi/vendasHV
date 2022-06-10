@@ -19,10 +19,10 @@
 	</f:facet>
 	</p:toolbar>
 	<h:panelGrid columns="2">	
-	<p:outputLabel value="Código:"/> 
-	<p:inputText maxlength="20" size="10"/>
-	<p:outputLabel value="Descrição:"/> 
-	<p:inputText maxlength="50" size="30"/>		
+	<p:outputLabel value="Código:" /> 
+	<p:inputText maxlength="20" size="10" readonly="true" value="#{MBFornecedores.fornecedores.codigo}"/>
+	<p:outputLabel value="Descrição:" /> 
+	<p:inputText maxlength="50" size="30" value="#{MBFornecedores.fornecedores.descricao}"/>		
 	</h:panelGrid>
 	
 	<h:panelGrid columns="3">	

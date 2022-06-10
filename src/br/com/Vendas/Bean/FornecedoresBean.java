@@ -1,13 +1,9 @@
 package br.com.Vendas.Bean;
 
-
-
-
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-
+import br.com.Vendas.DAO.FornecedoresDAO;
 import br.com.Vendas.domain.Fornecedor;
 import br.com.Vendas.util.JSFUtil;
 
@@ -20,13 +16,16 @@ public class FornecedoresBean {
 //	private ArrayList<Fornecedor>itensFiltrados;
 //	
 //
-//	public Fornecedor getFornecedores() {
-//		return fornecedores;
-//	}
-//
-//	public void setFornecedor(Fornecedores fornecedores) {
-//		this.fornecedores = fornecedores;
-//	}
+	public Fornecedor getFornecedores() {
+		if(fornecedores == null){
+			fornecedores = new Fornecedor();
+		}
+		return fornecedores;
+	}
+
+	public void setFornecedor(Fornecedor fornecedores) {
+		this.fornecedores = fornecedores;
+	}
 //	public ArrayList<Fornecedores> getItens() {
 //		return itens;
 //	}
@@ -49,16 +48,17 @@ public class FornecedoresBean {
 	
 	public void salvar(){
 		
-//		  try {
-//			FornecedoresDAO fdao= new FornecedoresDAO();
-//			fdao.salvar(fornecedores);
+		  try {
+			FornecedoresDAO fdao= new FornecedoresDAO();
+			fdao.salvar(fornecedores);
 			
 			JSFUtil.adicionarMensagemSucesso("Fornecedor salvo com sucesso!");
-//			
-//		} catch (SQLException e) {
-//			JSFUtil.adicionarMensagemErro("ex.getMessage()");
-//			e.printStackTrace();
-//		}
+		
+	} catch (RuntimeException e) {
+		JSFUtil.adicionarMensagemErro("Erro ao cadastrar");
+			e.printStackTrace();
+		}
+	}
 		  
 	
 //	public void novo(){
@@ -109,4 +109,4 @@ public class FornecedoresBean {
 //    			}
 //    	}
 	}
-}
+
