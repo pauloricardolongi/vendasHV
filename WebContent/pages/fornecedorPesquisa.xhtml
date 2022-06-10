@@ -24,10 +24,15 @@
 	<p:button value="Novo"  outcome="/pages/fornecedorCadastro.xhtml"/> 	
 	</h:panelGrid>
 	
-	<p:dataTable emptyMessage="Nenhum Registro Cadastrado">
-	<p:column headerText="Código">
+	<p:dataTable emptyMessage="Nenhum Registro Cadastrado" value="#{MBFornecedores.itens}"
+	filteredValue="#{MBFornecedores.itensFiltrados}"
+	var="fornecedor"
+	>
+	<p:column headerText="Código" >
+	<h:outputText value="#{fornecedor.codigo}"/> 
 	</p:column>
-	<p:column headerText="Descrição">
+	<p:column headerText="Descrição" filterBy="#{fornecedor.descricao}" sortBy="#{fornecedor.descricao}">
+	<h:outputText value="#{fornecedor.descricao}"/> 
 	</p:column>
 	<p:column headerText="Opções">
 	</p:column>
