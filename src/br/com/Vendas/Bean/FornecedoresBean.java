@@ -20,9 +20,7 @@ public class FornecedoresBean {
 
 
 	public Fornecedor getFornecedores() {
-		if(fornecedores == null){
-			fornecedores = new Fornecedor();
-		}
+		
 		return fornecedores;
 	}
 
@@ -45,7 +43,7 @@ public class FornecedoresBean {
 		this.itensFiltrados = itensFiltrados;
 	}
 	
-	@PostConstruct
+	//@PostConstruct
 	public void prepararPesquisa(){
 	
 		  try {
@@ -57,6 +55,30 @@ public class FornecedoresBean {
 				JSFUtil.adicionarMensagemSucesso("ex.getMessage()");
 				e.printStackTrace();
 			}
+	}
+	
+	public void carregarCadastro(){
+		
+		  try {
+				String valor = JSFUtil.getParam("forcod");
+				if(valor != null){
+					Long codigo = Long.parseLong(valor);
+					
+					FornecedoresDAO fdao = new FornecedoresDAO();
+					fornecedores = fdao.buscarPorCodigo(codigo);
+				}
+				else{
+					   
+					  fornecedores = new Fornecedor();
+					
+				}
+		  }
+			catch(RuntimeException e){
+				
+				JSFUtil.adicionarMensagemSucesso("ex.getMessage()");
+				e.printStackTrace();
+			}
+	
 	}
 	
 	public void novo(){
@@ -81,39 +103,36 @@ public class FornecedoresBean {
 		  
 	
 
-//	}
-//	
-//    public void excluir(){
-//		
-//    	try {
-//			FornecedoresDAO fdao = new FornecedoresDAO();
-//			 fdao.excluir(fornecedores);
-//			 
-//			 itens = fdao.listar();	 
-//			 
-//			 JSFUtil.adicionarMensagemSucesso("Fornecedor excluido com sucesso!");
-//			} 
-//    	catch (SQLException e) {
-//				JSFUtil.adicionarMensagemErro("Não é possível excluir fornecedor que tenha um produto associado!");
-//				e.printStackTrace();
-//			}
-//    }
-//    	
-//    
-//        public void editar(){
-//    		
-//        	try {
-//    			 FornecedoresDAO fdao= new FornecedoresDAO();
-//    			 fdao.editar(fornecedores);
-//    			 
-//    			 itens = fdao.listar();    			
-//    			 
-//    			 JSFUtil.adicionarMensagemSucesso("Fornecedor editado com sucesso!");
-//    			 
-//    			} catch (SQLException e) {
-//    				JSFUtil.adicionarMensagemErro("ex.getMessage()");
-//    				e.printStackTrace();
-//    			}
-//    	}
+	
+	
+    public void excluir(){
+		
+    	try {
+			FornecedoresDAO fdao = new FornecedoresDAO();
+			 fdao.excluir(fornecedores);
+			 
+			 
+			 JSFUtil.adicionarMensagemSucesso("Fornecedor excluido com sucesso!");
+			} 
+    	catch (RuntimeException e) {
+				JSFUtil.adicionarMensagemErro("Não é possível excluir fornecedor que tenha um produto associado!");
+				e.printStackTrace();
+			}
+    }
+    	
+    
+        public void editar(){
+    		
+        	try {
+    			 FornecedoresDAO fdao= new FornecedoresDAO();
+    			 fdao.editar(fornecedores);
+    			 
+    			 JSFUtil.adicionarMensagemSucesso("Fornecedor editado com sucesso!");
+    			 
+    			} catch (RuntimeException e) {
+    				JSFUtil.adicionarMensagemErro("ex.getMessage()");
+    				e.printStackTrace();
+    			}
+    	}
 	}
 

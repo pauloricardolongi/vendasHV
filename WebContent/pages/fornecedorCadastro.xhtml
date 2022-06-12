@@ -7,8 +7,16 @@
 	xmlns:p="http://primefaces.org/ui" 
 	template="/templates/template.xhtml">
 
-	<ui:define name="conteudo">
 
+    
+    <ui:define name="metadata">    
+    <f:metadata >
+    <f:event listener="#{MBFornecedores.carregarCadastro}" 
+	type="preRenderView" />
+	</f:metadata>	
+    </ui:define>
+    
+	<ui:define name="conteudo">
 	<h:form id="frmforcad">
 	<p:toolbar>
     <f:facet name="left">
@@ -22,13 +30,20 @@
 	<p:inputText maxlength="50" size="30" value="#{MBFornecedores.fornecedores.descricao}"/>		
 	</h:panelGrid>
 	
-	<h:panelGrid columns="3">	
+	<h:panelGrid columns="5">	
 	<p:button value="Novo" actionListener="#{MBFornecedores.novo}"
-	 update=":frmforcad:pnforcad" />
-	  
+	 update=":frmforcad:pnforcad" />	  
 	<p:commandButton  value="Salvar"  actionListener="#{MBFornecedores.salvar}"
-	 update=":msgGlobal :frmforcad:pnforcad" />
-	<p:button value="Voltar" outcome="/pages/fornecedorPesquisa.xhtml"/>  
+	 update=":msgGlobal :frmforcad:pnforcad" />	 
+	 <p:commandButton  value="Excluir"  actionListener="#{MBFornecedores.excluir}"
+	 update=":msgGlobal "/>
+	 <p:commandButton  value="Editar" actionListener="#{MBFornecedores.editar}"
+	 update=":msgGlobal" /> 
+	 <p:button value="Voltar" outcome="/pages/fornecedorPesquisa.xhtml"/>  
+	 
+	 
+	 
+	 
 	</h:panelGrid>
 	</h:form>
 	 </ui:define>

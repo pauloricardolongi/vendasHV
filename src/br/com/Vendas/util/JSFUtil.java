@@ -1,6 +1,9 @@
 package br.com.Vendas.util;
 
+import java.util.Map;
+
 import javax.faces.application.FacesMessage;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 public class JSFUtil {
@@ -19,4 +22,12 @@ public static void adicionarMensagemErro(String mensagem){
 		contexto.addMessage(null, msg);
 		
 	}
+public static String getParam(String nome){	
+	FacesContext contexto = FacesContext.getCurrentInstance();
+	ExternalContext externalContext = contexto.getExternalContext();
+	Map<String, String>paramentros = externalContext.getRequestParameterMap();
+	String valor = paramentros.get(nome);
+	return valor;
+	
+}
 }
