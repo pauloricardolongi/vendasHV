@@ -32,13 +32,13 @@
 	
 	<h:panelGrid columns="5">	
 	<p:button value="Novo" actionListener="#{MBFornecedores.novo}"
-	 update=":frmforcad:pnforcad" />	  
+	 update=":frmforcad:pnforcad" rendered="#{MBFornecedores.acao == 'Novo'}" />	  
 	<p:commandButton  value="Salvar"  actionListener="#{MBFornecedores.salvar}"
 	 update=":msgGlobal :frmforcad:pnforcad" />	 
 	 <p:commandButton  value="Excluir"  actionListener="#{MBFornecedores.excluir}"
-	 update=":msgGlobal "/>
+	 update=":msgGlobal "  rendered="#{MBFornecedores.acao == 'Excluir'}"/>
 	 <p:commandButton  value="Editar" actionListener="#{MBFornecedores.editar}"
-	 update=":msgGlobal" /> 
+	 update=":msgGlobal" rendered="#{MBFornecedores.acao == 'Editar'}"/> 
 	 <p:button value="Voltar" outcome="/pages/fornecedorPesquisa.xhtml"/>  
 	 
 	 
